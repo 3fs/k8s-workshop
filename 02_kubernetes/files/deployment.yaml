@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-deployment
+  template:
+    metadata:
+      labels:
+        app: my-deployment
+    spec:
+      containers:
+      - image: eu.gcr.io/k8s-workshop-may-2019/k8s-workshop
+        tag: stable
+        name: k8s-workshop
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP

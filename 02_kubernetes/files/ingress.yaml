@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress
+  labels:
+    app: my-ingress
+spec:
+  tls:
+    - hosts:
+        - cranky-hippo.k8s.3fs.si
+      secretName: k8s.3fs.si-certificate
+  rules:
+    - host: cranky-hippo.k8s.3fs.si
+      http:
+        paths:
+          - path: "/"
+            backend:
+              serviceName: my-service
+              servicePort: http
