@@ -13,6 +13,10 @@ Think of it like apt/yum/homebrew for Kubernetes.
 - Charts can be stored on disk, or fetched from remote chart repositories
   (same as Debian or RedHat packages)
 
+## Prerequisites
+
+Execute all the tasks in the preprepared container. Instructions can be found [here](../02_kubernetes/README.md#access-to-your-namespace-in-workshop-k8s-cluster)
+
 ## Tasks
 
 1. [Create simple helm chart](./01_create_helm_chart.md)

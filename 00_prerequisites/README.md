@@ -1,4 +1,4 @@
-# k8s workshop prerequisites
+# [Workshop](../README.md) &raquo; k8s workshop prerequisites
 
 To actively participate in the workshop the following tools will be required.
 

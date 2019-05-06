@@ -46,7 +46,7 @@ your work, you can exit the container by executing `exit` command.
 
 The container will go into stopped status (you can check the status of
 containers with `docker ps --all` as discussed in this
-[section](#How-to-check-docker-status).
+[section](#how-to-check-docker-status).
 
 By running the command below you can inspect the container and get the detailed
 information about the running or stopped container.
