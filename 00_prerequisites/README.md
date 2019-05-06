@@ -4,8 +4,8 @@ To actively participate in the workshop the following tools will be required.
 
 ## Table of contents
 
-1. [Github repository](#github repository)
-2. [Docker installations](#docker installation)
+1. [Github repository](#github-repository)
+2. [Docker installations](#docker-installation)
 
 ## Github repository
 
