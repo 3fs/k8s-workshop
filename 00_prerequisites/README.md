@@ -22,3 +22,5 @@ just needs to be able to run them. To achieve that, please install Docker for
 your operating system.
 
 Installation instruction can be found [here](./docker_installation.md).
+
+## Next: [Containers](../01_containers/README.md)

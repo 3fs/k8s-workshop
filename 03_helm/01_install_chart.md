@@ -87,3 +87,5 @@ You can list the deployed releases by executing the following command.
 NAME        REVISION    UPDATED                     STATUS      CHART               APP VERSION NAMESPACE
 my-database 1           Sat May  4 12:20:48 2019    DEPLOYED    postgresql-3.18.4   10.7.0      default
 ```
+
+## Next: [Inspect upgrade](./02_inspect_upgrade.md)

@@ -117,3 +117,5 @@ You can check the result by opening your web page at your configured URL:
 ## Demo
 
 [![asciicast](https://asciinema.org/a/Vj4LzahOfCw8TkNLgrKmIIXFS.svg)](https://asciinema.org/a/Vj4LzahOfCw8TkNLgrKmIIXFS)
+
+## Next: [Appendix](../05_appendix/README.md)

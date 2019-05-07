@@ -26,3 +26,5 @@ helm history my-database
 The whole procedure can be seen here:
 
 [![asciicast](https://asciinema.org/a/CPzz5lL76mDKJt6vcLd3hFd6I.svg)](https://asciinema.org/a/CPzz5lL76mDKJt6vcLd3hFd6I)
+
+## Next: [Delete release](./03_delete_release.md)

@@ -60,3 +60,5 @@ REVISION      UPDATED                         STATUS          CHART             
 2               Sat May  4 12:38:14 2019        SUPERSEDED      postgresql-3.18.4       Deletion complete
 3               Sat May  4 12:43:15 2019        DEPLOYED        postgresql-3.18.4       Rollback to 1
 ```
+
+## Next: [Custom Helm](../04_custom_helm/README.md)

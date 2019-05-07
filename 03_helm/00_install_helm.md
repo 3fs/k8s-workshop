@@ -34,3 +34,5 @@ To prevent this, run `helm init` with the --tiller-tls-verify flag.
 For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
 Happy Helming!
 ```
+
+## Next: [Install charts](./01_install_chart.md)

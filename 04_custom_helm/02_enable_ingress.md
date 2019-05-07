@@ -50,3 +50,5 @@ helm history my-project
 ## Demo
 
 [![asciicast](https://asciinema.org/a/jdVnwcppufwU5hZPSwk01bH0P.svg)](https://asciinema.org/a/jdVnwcppufwU5hZPSwk01bH0P)
+
+## Next: [Add custom variables](./03_add_variables.md)
