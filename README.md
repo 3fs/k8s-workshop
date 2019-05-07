@@ -1,7 +1,7 @@
 # ![3fs](https://avatars1.githubusercontent.com/u/4487831?s=30&v=4 "3fs") 3fs k8s workshop
 
 This workshop is intended for users who are entering the world of Kubernetes and
-would like to have some hands-on expirience with deployment of simple services
+would like to have some hands-on experience with deployment of simple services
 to Google Cloud Kubernetes service.
 
 Workshop is devided into two parts:

@@ -18,7 +18,7 @@ ingress dictionary like this:
 - set the tls part to use the Secret with name `k8s.3fs.si-certificate` (which
   is already defined in k8s, since we have imported it in the previous tasks)
 - set the hosts part in the `tls` dictionary to `$CODE.k8s.3fs.si` (e.g.
-  `cranky-hippo.k8s.3fs.si`) T
+  `cranky-hippo.k8s.3fs.si`)
 
 The end result of ingress dictionary should look similar to this:
 
