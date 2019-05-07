@@ -26,6 +26,7 @@ Hands-on tasks are split into four major parts:
 - [Kubernetes](./02_kubernetes/README.md)
 - [Helm](./03_helm/README.md)
 - [Custom Helm](./04_custom_helm/README.md)
+- [Appendix](./05_appendix/README.md)
 
 Each part has several different tasks with the solution provided either by
 screenshare, file or command outputs.

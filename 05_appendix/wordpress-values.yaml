@@ -1,0 +1,39 @@
+# Custom blog name.
+wordpressBlogName: k8s-workshop
+
+# Limit computing resources available to wordpress - allow up to 0.1 CPU and up
+# to 128 Mebibytes of RAM.
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 100m
+
+# Allow 1 Gibibyte of PVC usage.
+persistence:
+  enabled: true
+  size: 1Gi
+
+# Customizing values of dependency chart mariadb.
+mariadb:
+  master:
+    persistence:
+      enabled: true
+      # Allow 1 Gibibyte of PVC usage.
+      size: 1Gi
+
+# Make service only accessible within the Kubernetes cluster.
+service:
+  type: ClusterIP
+
+# Configure ingress, making service available from the outside.
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/whitelist-source-range: 89.212.81.128/27,213.172.248.132/32
+  hosts:
+  # URL of Wordpress deployment. For workshop participants, the prefix should contain $CODE.
+  - name: wp.k8s.3fs.si
+    path: /
+    tls: true
+    tlsSecret: k8s.3fs.si-certificate
