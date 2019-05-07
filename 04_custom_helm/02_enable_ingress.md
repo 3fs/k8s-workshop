@@ -44,7 +44,7 @@ chart:
 
 ```bash
 helm upgrade my-project workshop-chart
-helm history my project
+helm history my-project
 ```
 
 ## Demo

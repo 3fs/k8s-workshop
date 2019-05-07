@@ -26,6 +26,6 @@ Execute all the tasks in the preprepared container. Instructions can be found [h
 
 ## Demo
 
-Example chart is available [here](https://github.com/3fs/k8s-workshop/04_custom/helm/workshop-chart/).
+Example chart is available [here](https://github.com/3fs/k8s-workshop/blob/master/04_custom_helm/README.md)
 
 [![asciicast](https://asciinema.org/a/SY034jPcErkVmVMBeb9lXc9Xp.svg)](https://asciinema.org/a/SY034jPcErkVmVMBeb9lXc9Xp)
