@@ -17,25 +17,29 @@ Run the below command to start a docker container with credentials to access
 your test namespace in a kubernetes cluster.
 
 Substitute `${CODE}` with workshop code you received as part of printed
-instructions. Replace `${REPO}` with path to [downloaded github
+instructions. Replace `${PWD}` with path to [downloaded github
 repository](../00_prerequisites/README.md#github-repository). This will mount
 the repository inside container, so you will be able to edit files locally and
 then apply changes using credentials inside the container.
 
 ```bash
 docker run \
-    -v ${REPO}:/repo \
+    -v "${PWD}":/repo \
     -it \
     eu.gcr.io/k8s-workshop-may-2019/console:${CODE}
 ```
 
 ### Access to kubernetes dashboard
 
-The workshop kubernetes cluster has [kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) enabled. To access the dashboard:
+The workshop kubernetes cluster has [kubernetes
+dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+enabled. To access the dashboard:
 
 1. open [kubernetes dashboard](https://dashboard.k8s.3fs.si)
-2. login using token which can be obtained from the `console` container with command `login-token`
-3. enter the name of your namespace into the input field on the dashboard's left column
+2. login using token which can be obtained from the `console` container with
+   command `login-token`
+3. enter the name of your namespace into the input field on the dashboard's left
+   column
 
 ## Tasks
 
@@ -43,8 +47,8 @@ The workshop kubernetes cluster has [kubernetes dashboard](https://kubernetes.io
 
 One of the commands for creating and updating kubernetes objects is `kubectl
 apply`. Use it to create a Deployment resource named `my-deployment`, which will
-run a sample container and a Service resource named `my-service`, which abstracts
-access to `my-deployment` in the cluster.
+run a sample container and a Service resource named `my-service`, which
+abstracts access to `my-deployment` in the cluster.
 
 ```bash
 kubectl apply -f /repo/02_kubernetes/files/deployment.yaml
@@ -54,17 +58,17 @@ kubectl apply -f /repo/02_kubernetes/files/service.yaml
 Example output:
 
 ```console
-# kubectl apply -f files/deployment.yaml
+# kubectl apply -f /repo/02_kubernetes/files/deployment.yaml
 deployment.apps/my-deployment created
-# kubectl apply -f files/service.yaml
+# kubectl apply -f /repo/02_kubernetes/files/service.yaml
 service/my-service created
 ```
 
 ### Create the certificate secret
 
 A .yaml file to create the wildcard certificate secret is located in the `/`
-folder of Docker container. This object will be important in the future
-tasks. Apply it using the following command:
+folder of Docker container. This object will be important in the future tasks.
+Apply it using the following command:
 
 ```bash
 kubectl create -f /k8s.3fs.si-cert.yaml
@@ -79,8 +83,9 @@ secret/k8s.3fs.si-certificate created
 
 ### Create an Ingress object
 
-First off, edit hostnames in `files/ingress.yaml` to include `$CODE` (e.g.
-`cranky-hippo.k8s.3fs.si`). The `spec` section should look similar to:
+First off, edit hostnames in `/repo/02_kubernetes/files/ingress.yaml` to include
+`$CODE` (e.g. `cranky-hippo.k8s.3fs.si`). The `spec` section should look similar
+to:
 
 ```yaml
 tls:
@@ -103,10 +108,11 @@ Create the Ingress object named `my-ingress` using the following command.
 kubectl apply -f /repo/02_kubernetes/files/ingress.yaml
 ```
 
-The deployment should now be available at the configured hostname. Example output:
+The deployment should now be available at the configured hostname. Example
+output:
 
 ```console
-# kubectl apply -f files/ingress.yaml
+# kubectl apply -f /repo/02_kubernetes/files/ingress.yaml
 ingress.extensions/my-ingress created
 ```
 
@@ -137,7 +143,9 @@ replicaset.apps/my-deployment-cb847b564    1         1         1       4m
 
 ### Show deployment logs
 
-We can inspect text output made by any kubernetes resource using `kubectl logs`. Following is an example of logs for previously deployed `my-deployment`. Resource names can be found using `kubectl get all`.
+We can inspect text output made by any kubernetes resource using `kubectl logs`.
+Following is an example of logs for previously deployed `my-deployment`.
+Resource names can be found using `kubectl get all`.
 
 ```bash
 kubectl logs deployment.apps/my-deployment
