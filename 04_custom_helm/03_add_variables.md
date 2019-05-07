@@ -111,6 +111,9 @@ helm upgrade my-project workshop-chart --recreate-pods
 helm history my-project
 ```
 
+You can check the result by opening your web page at your configured URL:
+`https://${CODE}.k8s.3fs.si/hello`
+
 ## Demo
 
 [![asciicast](https://asciinema.org/a/Vj4LzahOfCw8TkNLgrKmIIXFS.svg)](https://asciinema.org/a/Vj4LzahOfCw8TkNLgrKmIIXFS)

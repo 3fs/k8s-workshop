@@ -22,7 +22,6 @@ Execute all the tasks in the preprepared container. Instructions can be found [h
 1. [Create simple helm chart](./01_create_helm_chart.md)
 2. [Enable Ingress resource](./02_enable_ingress.md)
 3. [Add custom variables](./03_add_variables.md)
-4. [Configure health probes](./04_configure_probes.md)
 
 ## Demo
 
