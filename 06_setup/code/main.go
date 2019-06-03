@@ -64,11 +64,11 @@ func readyHandler() http.HandlerFunc {
 	}
 }
 
-// liveHandler is used for liveness probe and fakes being dead after 50 seconds
+// liveHandler is used for liveness probe and fakes being dead after 20 seconds
 func liveHandler(start time.Time) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		duration := time.Since(start)
-		if duration.Seconds() > 50 {
+		if duration.Seconds() > 20 {
 			w.WriteHeader(500)
 			fmt.Fprintf(w, "error: not alive any more\n")
 		} else {
