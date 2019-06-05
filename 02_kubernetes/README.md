@@ -26,7 +26,7 @@ then apply changes using credentials inside the container.
 docker run \
     -v "${PWD}":/repo \
     -it \
-    eu.gcr.io/k8s-workshop-mb-2019/console:${CODE}
+    eu.gcr.io/k8s-workshop-mb/console:${CODE}
 ```
 
 ### Access to kubernetes dashboard

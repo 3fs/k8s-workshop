@@ -58,14 +58,14 @@ will be used in k8s Deployment.
 
 To use workshop image the values needs to be updated accordingly:
 
-1. update the repository name: `eu.gcr.io/k8s-workshop-mb-2019/k8s-workshop`
+1. update the repository name: `eu.gcr.io/k8s-workshop-mb/k8s-workshop`
 2. update the tag name to `latest`
 
 The result should be similar to this:
 
 ```yaml
 image:
-  repository: eu.gcr.io/k8s-workshop-mb-2019/k8s-workshop
+  repository: eu.gcr.io/k8s-workshop-mb/k8s-workshop
   tag: latest
   pullPolicy: IfNotPresent
 ```

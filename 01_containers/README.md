@@ -78,7 +78,7 @@ docker run \
     -p 127.0.0.1:8080:80 \
     --detach \
     --name k8s-workshop-hello \
-    eu.gcr.io/k8s-workshop-mb-2019/k8s-workshop:latest
+    eu.gcr.io/k8s-workshop-mb/k8s-workshop:latest
 ```
 
 > The container image was prepared in advance and pushed into Google cloud
@@ -115,7 +115,7 @@ docker run \
     --detach \
     --name k8s-workshop-env \
     --env CODE=k8s-workshop \
-    eu.gcr.io/k8s-workshop-mb-2019/k8s-workshop:latest
+    eu.gcr.io/k8s-workshop-mb/k8s-workshop:latest
 ```
 
 After you are done, stop it with the following command.
@@ -143,7 +143,7 @@ docker run \
     --detach \
     --name k8s-workshop-directory \
     --mount type=bind,source=/Users/k8s-workshop/,target=/tmp \
-    eu.gcr.io/k8s-workshop-mb-2019/k8s-workshop:latest
+    eu.gcr.io/k8s-workshop-mb/k8s-workshop:latest
 ```
 
 After you are done, stop it with the following command.
