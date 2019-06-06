@@ -82,5 +82,4 @@ helm list
 
 [![asciicast](https://asciinema.org/a/0WVHLySWODgjdOIuqnZFoLH57.svg)](https://asciinema.org/a/0WVHLySWODgjdOIuqnZFoLH57)
 
-
 ## Next: [Enable Ingress resource](./02_enable_ingress.md)

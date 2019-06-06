@@ -14,21 +14,20 @@ use of Helm.
 
 ## Introduction
 
-In this tasks we will cover installing PostgreSQL database server into k8s
+In this tasks we will cover installing DokuWiki software into k8s
 cluster from official chart available
-[here](https://github.com/helm/charts/tree/master/stable/postgresql).
+[here](https://github.com/helm/charts/tree/master/stable/dokuwiki).
 
 The chart provides multiple configuration options. For the purpose of the
 following tasks, we will use change few of them.
+
+All configuration values are available
+[here](https://github.com/helm/charts/tree/master/stable/dokuwiki#configuration)
 
 ## Tasks
 
 - [Install charts](./01_install_chart.md)
 - [Inspect upgrade](./02_inspect_upgrade.md)
 - [Delete release](./03_delete_release.md)
-
-## Demo of all tasks
-
-[![asciicast](https://asciinema.org/a/wBacx1Pd7gEgfqvA2BUjMEG67.svg)](https://asciinema.org/a/wBacx1Pd7gEgfqvA2BUjMEG67)
 
 ## Next: [Custom Helm](../04_custom_helm/README.md)

@@ -7,24 +7,28 @@ failes, rollback to the previous version is performed.
 To inspect the release history execute the following command:
 
 ```bash
-helm history my-database
+helm history my-wiki
 ```
 
 We can upgrade the release with new configuration like this. The following will
-redeploy PostgreSQL with 9.6 version.
+redeploy DokuWiki and open it to outside world on the address `https://$CODE.k8s.3fs.si`.
 
 ```bash
-helm upgrade --set persistence.enabled=false --set image.tag=9.6 my-database stable/postgresql
+➜  helm upgrade \
+    --set "ingress.enabled=true" \
+    --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
+    --set "ingress.hosts[0].tls=true" \
+    --set "ingress.hosts[0].tlsSecret=k8s.3fs.si-certificate" \
+    my-wiki stable/dokuwiki
 ```
 
 After a successful deployment we can check history once again.
 
 ```bash
-helm history my-database
+helm history my-wiki
+REVISION    UPDATED                     STATUS        CHART             DESCRIPTION
+1           Thu Jun  6 07:35:58 2019    SUPERSEDED    dokuwiki-4.3.1    Install complete
+2           Thu Jun  6 07:37:22 2019    DEPLOYED      dokuwiki-4.3.1    Upgrade complete
 ```
-
-The whole procedure can be seen here:
-
-[![asciicast](https://asciinema.org/a/CPzz5lL76mDKJt6vcLd3hFd6I.svg)](https://asciinema.org/a/CPzz5lL76mDKJt6vcLd3hFd6I)
 
 ## Next: [Delete release](./03_delete_release.md)
