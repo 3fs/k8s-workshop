@@ -16,7 +16,8 @@ settings and set ingress hostname.
 helm install \
     --name workshop-wp \
     -f wordpress-values.yaml \
-    --set ingress.hosts[0].name=wp-${CODE}.k8s.3fs.si \
+    --set "ingress.hosts[0].name=wp-${CODE}.k8s.3fs.si" \
+    --set "ingress.tls[0].hosts[0]=wp-${CODE}.k8s.3fs.si" \
     --wait \
     stable/wordpress
 ```
