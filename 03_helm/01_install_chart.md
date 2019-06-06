@@ -19,7 +19,7 @@ name of our new release is `my-wiki`.
 helm install --name my-wiki stable/dokuwiki
 ```
 
-This command created the object and send them to k8s and the output describes,
+This command created the objects and send them to k8s and the output describes,
 which objects were created and show some basic information about the
 installation.
 
