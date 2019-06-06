@@ -14,7 +14,7 @@ We can upgrade the release with new configuration like this. The following will
 redeploy DokuWiki and open it to outside world on the address `https://$CODE.k8s.3fs.si`.
 
 ```bash
-➜  helm upgrade \
+helm upgrade \
     --set "ingress.enabled=true" \
     --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
     --set "ingress.hosts[0].tls=true" \

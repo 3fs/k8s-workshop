@@ -25,9 +25,9 @@ helm rollback my-wiki 1
 Output of these commands can be seen here:
 
 ```console
-➜  helm delete my-wiki
+# helm delete my-wiki
 release "my-wiki" deleted
-➜  helm status my-wiki
+# helm status my-wiki
 LAST DEPLOYED: Thu Jun  6 07:42:58 2019
 NAMESPACE: default
 STATUS: DELETED
@@ -48,14 +48,14 @@ NOTES:
   echo Username: user
   echo Password: $(kubectl get secret --namespace default my-wiki-dokuwiki -o jsonpath="{.data.dokuwiki-password}" | base64 --decode)
 
-➜ helm rollback my-wiki 1
+# helm rollback my-wiki 1
 Rollback was a success! Happy Helming!
-➜ helm history my-wiki
-REVISION	UPDATED                 	STATUS    	CHART         	DESCRIPTION
-1       	Thu Jun  6 07:35:58 2019	SUPERSEDED	dokuwiki-4.3.1	Install complete
-2       	Thu Jun  6 07:37:22 2019	SUPERSEDED	dokuwiki-4.3.1	Upgrade complete
-3       	Thu Jun  6 07:42:58 2019	SUPERSEDED	dokuwiki-4.3.1	Deletion complete
-4       	Thu Jun  6 07:44:29 2019	DEPLOYED  	dokuwiki-4.3.1	Rollback to 1
+# helm history my-wiki
+REVISION    UPDATED                     STATUS        CHART             DESCRIPTION
+1           Thu Jun  6 07:35:58 2019    SUPERSEDED    dokuwiki-4.3.1    Install complete
+2           Thu Jun  6 07:37:22 2019    SUPERSEDED    dokuwiki-4.3.1    Upgrade complete
+3           Thu Jun  6 07:42:58 2019    SUPERSEDED    dokuwiki-4.3.1    Deletion complete
+4           Thu Jun  6 07:44:29 2019    DEPLOYED      dokuwiki-4.3.1    Rollback to 1
 ```
 
 ## Next: [Custom Helm](../04_custom_helm/README.md)

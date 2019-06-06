@@ -9,8 +9,8 @@ use of Helm.
 
 1. A Kubernetes cluster
 2. Preconfigured container used for task in previous task: [Instructions](../02_kubernetes/README.md#access-to-your-namespace-in-workshop-k8s-cluster)
-3. [Installed and configured Helm and Tiller, the cluster-side service](./00_install_helm.md).
-4. Installed helm client (already installed in the container)
+3. Installed helm client (already installed in the container)
+4. [Installed and configured Helm and Tiller, the cluster-side service](./00_install_helm.md).
 
 ## Introduction
 

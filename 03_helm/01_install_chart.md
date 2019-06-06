@@ -23,13 +23,14 @@ helm install stable/dokuwiki
 The output should look like this:
 
 ```console
-➜  helm repo update
+# helm repo update
 Hang tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "jetstack" chart repository
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈
-➜  helm install --name my-wiki stable/dokuwiki
+
+# helm install --name my-wiki stable/dokuwiki
 
 NAME:   my-wiki
 LAST DEPLOYED: Thu Jun  6 07:35:58 2019
@@ -82,7 +83,7 @@ NOTES:
 You can list the deployed releases by executing the following command.
 
 ```console
-➜  helm list
+# helm list
 NAME           REVISION    UPDATED                     STATUS      CHART                   APP VERSION                NAMESPACE
 my-wiki        1           Thu Jun  6 07:16:54 2019    DEPLOYED    dokuwiki-4.3.1          0.20180422.201901061035    cranky-hippo
 ```
