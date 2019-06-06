@@ -22,7 +22,7 @@ The chart provides multiple configuration options. For the purpose of the
 following tasks, we will use change few of them.
 
 All configuration values are available
-[here](https://github.com/helm/charts/tree/master/stable/dokuwiki#configuration)
+[here](https://github.com/helm/charts/tree/master/stable/dokuwiki#configuration).
 
 ## Tasks
 

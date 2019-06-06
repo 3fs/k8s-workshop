@@ -16,20 +16,14 @@ In the example below, the `stable/dokuwiki` chart will be released, and the
 name of our new release is `my-wiki`.
 
 ```bash
-helm repo update
-helm install stable/dokuwiki
+helm install --name my-wiki stable/dokuwiki
 ```
 
-The output should look like this:
+This command created the object and send them to k8s and the output describes,
+which objects were created and show some basic information about the
+installation.
 
 ```console
-# helm repo update
-Hang tight while we grab the latest from your chart repositories...
-...Skip local chart repository
-...Successfully got an update from the "jetstack" chart repository
-...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
-
 # helm install --name my-wiki stable/dokuwiki
 
 NAME:   my-wiki
@@ -88,4 +82,4 @@ NAME           REVISION    UPDATED                     STATUS      CHART        
 my-wiki        1           Thu Jun  6 07:16:54 2019    DEPLOYED    dokuwiki-4.3.1          0.20180422.201901061035    cranky-hippo
 ```
 
-## Next: [Inspect upgrade](./02_inspect_upgrade.md)
+## Next: [Inspect a Release](./02_inspect_upgrade.md)
