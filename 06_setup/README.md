@@ -13,12 +13,12 @@ To-dos:
 - [ ] identify k8s workshop name and update it in repository
 - [ ] prepare LE wildcard certificate using DNS challenge
 - [ ] create cluster
+- [ ] raise the limits on GCP
 - [ ] create registry
 - [ ] import certificate into cluster
 - [ ] create Ingress controller
-- [ ] create dashboard ingress controller with whitelisted IP
+- [ ] create dashboard ingress controller
 - [ ] create wildcard DNS record
 - [ ] prepare workshop names
-- [ ] create namespaces with appropriate credentials
-- [ ] generate docker containers with credentials included
+- [ ] generate namespaces and containers with credentials and github repository included
 - [ ] print vouchers with workshop names and other practicalities (wifi, ...)

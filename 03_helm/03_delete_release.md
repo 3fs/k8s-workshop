@@ -99,7 +99,7 @@ The following command will remove `my-wiki` release and all its traces from the 
 helm delete --purge my-wiki
 ```
 
-The ouput should be similar to basic delete command:
+The output should is similar to basic delete command:
 
 ```console
 # helm delete --purge my-wiki

@@ -48,7 +48,7 @@ later in the definitions of k8s resources (Deployment, Service, Ingress). The
 default helm chart `values.yaml` includes definitions of:
 
 - [used images](#image-config)
-- ingress resource definitions
+- Ingress resource definitions
 - resource utilization definitions (these parts will be untouched)
 
 ### Image config
