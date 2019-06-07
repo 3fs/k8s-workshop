@@ -24,7 +24,9 @@ RUN curl -L -o helm.tgz https://storage.googleapis.com/kubernetes-helm/helm-${HE
   && tar xzf helm.tgz \
   && mv linux-amd64/helm /usr/local/bin/helm \
   && rm -r linux-amd64/ helm.tgz \
-  && echo 'source <(helm completion bash)' >> /etc/bash.bashrc
+  && echo 'source <(helm completion bash)' >> /etc/bash.bashrc \
+  && /usr/local/bin/helm init --client-only \
+  && /usr/local/bin/helm repo update
 
 COPY motd /etc/motd
 RUN cat /etc/motd >> /etc/bash.bashrc
