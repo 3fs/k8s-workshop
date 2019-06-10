@@ -34,7 +34,7 @@ then apply changes using credentials inside the container.
 
 ```bash
 docker run \
-    -v "${PWD}":/repo
+    -v "${PWD}":/repo \
     -it \
     eu.gcr.io/k8s-workshop-mb/console:${CODE}
 ```
