@@ -17,17 +17,31 @@ Run the below command to start a docker container with credentials to access
 your test namespace in a kubernetes cluster.
 
 Substitute `${CODE}` with workshop code you received as part of printed
-instructions. Replace `${PWD}` with path to [downloaded github
+instructions.
+
+```bash
+docker run \
+    -it \
+    eu.gcr.io/k8s-workshop-mb/console:${CODE}
+```
+
+If you would like to edit file locally and use them in docker container, you can
+do that by downloading the workshop repository from github and mount it into
+docker container. Replace `${PWD}` with path to [downloaded github
 repository](../00_prerequisites/README.md#github-repository). This will mount
 the repository inside container, so you will be able to edit files locally and
 then apply changes using credentials inside the container.
 
 ```bash
 docker run \
-    -v "${PWD}":/repo \
+    -v "${PWD}":/repo
     -it \
     eu.gcr.io/k8s-workshop-mb/console:${CODE}
 ```
+
+Users of Windows operating system may expirience issues with accessing the
+repository directory. This can be solved like
+[this](https://token2shell.com/howto/docker/sharing-windows-folders-with-containers/).
 
 ### Access to kubernetes dashboard
 

@@ -22,10 +22,24 @@ This will uninstall `my-wiki` from Kubernetes, but you will
 still be able to request information about that release.
 
 ```bash
+helm history my-wiki
+```
+
+```console
+# helm history my-wiki
+REVISION  UPDATED                   STATUS      CHART           DESCRIPTION
+1         Mon Jun 10 08:49:55 2019  SUPERSEDED  dokuwiki-4.3.1  Install complete
+2         Mon Jun 10 08:53:18 2019  DELETED     dokuwiki-4.3.1  Deletion complete
+```
+
+Additionally, status of the deployment can be checked:
+
+```bash
 helm status my-wiki
 ```
 
-The output of this command should be like this. Note the `STATUS: DELETED`.
+<details>
+    <summary>The output of this command should be like this. Note the `STATUS: DELETED`.</summary>
 
 ```console
 # helm status my-wiki
@@ -51,6 +65,8 @@ NOTES:
   echo Password: $(kubectl get secret --namespace default my-wiki-dokuwiki -o jsonpath="{.data.dokuwiki-password}" | base64 --decode)
 ```
 
+</details>
+
 ## Rollback
 
 Because Helm tracks your releases even after you've deleted them, you
@@ -61,32 +77,31 @@ rollback` command.
 helm history my-wiki
 ```
 
-The output should be like this.
-
 ```console
 # helm history my-wiki
-REVISION    UPDATED                     STATUS     CHART             DESCRIPTION
-1           Thu Jun  6 09:29:20 2019    DELETED    dokuwiki-4.3.1    Deletion complete
+REVISION  UPDATED                   STATUS      CHART           DESCRIPTION
+1         Mon Jun 10 08:49:55 2019  SUPERSEDED  dokuwiki-4.3.1  Install complete
+2         Mon Jun 10 08:53:18 2019  DELETED     dokuwiki-4.3.1  Deletion complete
 ```
 
 To make a undelete/rollback of the release, execute the following command, which
-will rollback the release to revision you have specified (in our case `1`).
+will rollback the release to revision you have specified (in our case `2`).
 
 ```bash
-helm rollback my-wiki 1
+helm rollback my-wiki 2
 ```
 
 Output:
 
 ```console
-# helm rollback my-wiki 1
+# helm rollback my-wiki 2
 Rollback was a success! Happy Helming!
+
 # helm history my-wiki
 REVISION    UPDATED                     STATUS        CHART             DESCRIPTION
 1           Thu Jun  6 07:35:58 2019    SUPERSEDED    dokuwiki-4.3.1    Install complete
-2           Thu Jun  6 07:37:22 2019    SUPERSEDED    dokuwiki-4.3.1    Upgrade complete
 3           Thu Jun  6 07:42:58 2019    SUPERSEDED    dokuwiki-4.3.1    Deletion complete
-4           Thu Jun  6 07:44:29 2019    DEPLOYED      dokuwiki-4.3.1    Rollback to 1
+4           Thu Jun  6 07:44:29 2019    DEPLOYED      dokuwiki-4.3.1    Rollback to 2
 ```
 
 ## Purge a release

@@ -23,6 +23,9 @@ This command created the objects and send them to k8s and the output describes,
 which objects were created and show some basic information about the
 installation.
 
+<details>
+    <summary>Show output</summary>
+
 ```console
 # helm install --name my-wiki stable/dokuwiki
 
@@ -71,6 +74,8 @@ NOTES:
   echo Password: $(kubectl get secret --namespace default my-wiki-dokuwiki -o jsonpath="{.data.dokuwiki-password}" | base64 --decode)
 
 ```
+
+</details>
 
 ## Learn About Releases
 
