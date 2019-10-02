@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: eu.gcr.io/k8s-workshop-mb/k8s-workshop
+  repository: eu.gcr.io/k8s-workshop-skopje/k8s-workshop
   tag: stable
   pullPolicy: IfNotPresent
 
