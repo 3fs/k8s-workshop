@@ -19,10 +19,10 @@ gcloud auth login
 
 ### Set the default project
 
-Set default project with the following command (e.g. `k8s-workshop-skopje`)
+Set default project with the following command (e.g. `k8s-workshop-mb`)
 
 ```bash
-gcloud config set project k8s-workshop-skopje
+gcloud config set project k8s-workshop-mb
 ```
 
 ### Enable the container registry
@@ -34,5 +34,5 @@ gcloud services enable containerregistry.googleapis.com
 ```
 
 Pushing and pulling container images is now possible. The registry address we
-use is `eu.gcr.io/k8s-workshop-skopje`.
+use is `eu.gcr.io/k8s-workshop-mb`.
 

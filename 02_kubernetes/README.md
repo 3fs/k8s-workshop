@@ -22,7 +22,7 @@ instructions.
 ```bash
 docker run \
     -it \
-    eu.gcr.io/k8s-workshop-skopje/console:${CODE}
+    eu.gcr.io/k8s-workshop-mb/console:${CODE}
 ```
 
 If you would like to edit file locally and use them in docker container, you can
@@ -36,7 +36,7 @@ then apply changes using credentials inside the container.
 docker run \
     -v "${PWD}":/repo \
     -it \
-    eu.gcr.io/k8s-workshop-skopje/console:${CODE}
+    eu.gcr.io/k8s-workshop-mb/console:${CODE}
 ```
 
 Users of Windows operating system may expirience issues with accessing the
