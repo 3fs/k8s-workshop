@@ -15,7 +15,7 @@ spec:
         app: my-deployment
     spec:
       containers:
-      - image: eu.gcr.io/k8s-workshop-mb/k8s-workshop:stable
+      - image: eu.gcr.io/k8s-workshop/k8s-workshop:stable
         name: k8s-workshop
         ports:
           - name: http
