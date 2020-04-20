@@ -54,24 +54,7 @@ Before we can use `kubectl` we must configure it to communicate with our GKE clu
 gcloud container clusters get-credentials workshop-cluster
 ```
 
-## Initialize helm
-
-Tiller is the server component of Helm. Because it needs appropriate credentials
-for operation, we provision `tiller` ServiceAccount and create `cluster-admin`
-ClusterRoleBinding by applying the
-[rbac-config.yaml](./resources/rbac-config.yaml).
-
-```bash
-kubectl create -f ./resources/rbac-config.yaml
-```
-
-Then we can initialize Tiller with the following command.
-
-```bash
-helm init --service-account tiller
-```
-
-## Install NGINX ingress controller
+## Install NGINX ingress controller using helm3
 
 Install [NGINX ingress
 controller](https://github.com/nginxinc/kubernetes-ingress) in `kube-system`
@@ -79,14 +62,21 @@ namespace with `externalTrafficPolicy` set to `local`, so that ingress can filte
 requests by source IP address.
 
 ```bash
-helm install stable/nginx-ingress \
+helm install nginx-ingress stable/nginx-ingress \
   --namespace kube-system \
   --set controller.service.externalTrafficPolicy=Local
 ```
 
-## File a DNS entry
-
 ## Generate wildcard certificate for given domain
+
+By using DNS validation execute the following command to obtain certificate.
+
+```bash
+certbot --server https://acme-v02.api.letsencrypt.org/directory \
+  -d $domain --manual --preferred-challenges dns-01 \
+  --cert-path . --key-path .  --fullchain-path . --chain-path . \
+  --work-dir . --logs-dir . --config-dir . certonly
+```
 
 ## Create certificate secret
 

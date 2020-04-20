@@ -74,7 +74,7 @@ After this has been configured, we can use `helm` to deploy our chart to k8s
 cluster.
 
 ```bash
-helm install workshop-chart --name my-project
+helm install my-project workshop-chart
 helm list
 ```
 

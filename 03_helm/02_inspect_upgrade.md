@@ -7,16 +7,17 @@ failes, rollback to the previous version is performed.
 To inspect the release history execute the following command:
 
 ```bash
-helm history my-wiki
+  helm history my-wiki
 ```
 
 ```console
 # helm history my-wiki
-REVISION    UPDATED                     STATUS      CHART             DESCRIPTION
-1           Thu Jun  6 07:35:58 2019    DEPLOYED    dokuwiki-4.3.1    Install complete
+
+REVISION	UPDATED                 	STATUS  	CHART          	APP VERSION            	DESCRIPTION
+1       	Tue Apr 21 08:02:44 2020	deployed	dokuwiki-6.0.15	0.20180422.201901061035	Install complete
 ```
 
-We can upgrade the release with new configuration like this. The following will
+We can update the release with new configuration like this. The following will
 redeploy DokuWiki and open it to outside world on the address `https://$CODE.k8s.3fs.si`.
 
 ```bash
@@ -25,7 +26,7 @@ helm upgrade \
     --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
     --set "ingress.hosts[0].tls=true" \
     --set "ingress.hosts[0].tlsSecret=k8s.3fs.si-certificate" \
-    my-wiki stable/dokuwiki
+    my-wiki bitnami/dokuwiki
 ```
 
 <details>
@@ -33,46 +34,27 @@ helm upgrade \
 
 ```console
 # helm upgrade \
-#    --set "ingress.enabled=true" \
-#    --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
-#    --set "ingress.hosts[0].tls=true" \
-#    --set "ingress.hosts[0].tlsSecret=k8s.3fs.si-certificate" \
-#    my-wiki stable/dokuwiki
-
-Release "my-wiki" has been upgraded.
-LAST DEPLOYED: Mon Jun 10 08:53:18 2019
+#     --set "ingress.enabled=true" \
+#     --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
+#     --set "ingress.hosts[0].tls=true" \
+#     --set "ingress.hosts[0].tlsSecret=k8s.3fs.si-certificate" \
+#     my-wiki bitnami/dokuwiki
+Release "my-wiki" has been upgraded. Happy Helming!
+NAME: my-wiki
+LAST DEPLOYED: Tue Apr 21 08:06:06 2020
 NAMESPACE: default
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/Pod(related)
-NAME                            READY  STATUS   RESTARTS  AGE
-my-wiki-dokuwiki-57c79d9-4zx6b  1/1    Running  0         3m22s
-
-==> v1/Secret
-NAME              TYPE    DATA  AGE
-my-wiki-dokuwiki  Opaque  1     3m22s
-
-==> v1/Service
-NAME              TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)                     AGE
-my-wiki-dokuwiki  LoadBalancer  10.106.72.55  localhost    80:32526/TCP,443:31330/TCP  3m22s
-
-==> v1beta1/Deployment
-NAME              READY  UP-TO-DATE  AVAILABLE  AGE
-my-wiki-dokuwiki  1/1    1           1          3m22s
-
-
+STATUS: deployed
+REVISION: 3
+TEST SUITE: None
 NOTES:
-
 ** Please be patient while the chart is being deployed **
 
-1. Get the DokuWiki URL by running:
+1. Get the DokuWiki URL indicated on the Ingress Rule and associate it to your cluster external IP:
 
-** Please ensure an external IP is associated to the my-wiki-dokuwiki service before proceeding **
-** Watch the status using: kubectl get svc --namespace default -w my-wiki-dokuwiki **
-
-  export SERVICE_IP=$(kubectl get svc --namespace default my-wiki-dokuwiki --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
-  echo "URL: http://$SERVICE_IP/"
+   export CLUSTER_IP=$(minikube ip) # On Minikube. Use: `kubectl cluster-info` on others K8s clusters
+   export HOSTNAME=$(kubectl get ingress --namespace default my-wiki-dokuwiki -o jsonpath='{.spec.rules[0].host}')
+   echo "Dokuwiki URL: http://$HOSTNAME/"
+   echo "$CLUSTER_IP  $HOSTNAME" | sudo tee -a /etc/hosts
 
 2. Login with the following credentials
 
@@ -85,10 +67,26 @@ NOTES:
 After a successful deployment we can check history once again.
 
 ```console
-# helm history my-wiki
-REVISION    UPDATED                     STATUS        CHART             DESCRIPTION
-1           Thu Jun  6 07:35:58 2019    SUPERSEDED    dokuwiki-4.3.1    Install complete
-2           Thu Jun  6 07:37:22 2019    DEPLOYED      dokuwiki-4.3.1    Upgrade complete
+# REVISION	UPDATED                 	STATUS    	CHART          	APP VERSION            	DESCRIPTION
+1       	Tue Apr 21 08:07:30 2020	superseded	dokuwiki-6.0.15	0.20180422.201901061035	Install complete
+2       	Tue Apr 21 08:07:37 2020	deployed  	dokuwiki-6.0.15	0.20180422.201901061035	Upgrade complete
+```
+
+There is a way to check, which user provided values were changed by executing the following command:
+
+```bash
+helm get values my-wiki
+```
+
+```console
+# helm get values my-wiki
+USER-SUPPLIED VALUES:
+ingress:
+  enabled: true
+  hosts:
+  - name: $code.k8s.3fs.si
+    tls: true
+    tlsSecret: k8s.3fs.si-certificate
 ```
 
 ## Next: [Delete release](./03_delete_release.md)
