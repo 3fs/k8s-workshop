@@ -7,7 +7,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install kubectl.
-ENV K8S_RELEASE=v1.14.1 K8S_SHA512=66c3a470caecfb35ce9a995a6298e689aed5fabefbdb8aca5086adff572266ae47b997eea03ff3ce0272fdb5be8e22aced3e3ae35906b5ac90cf928d7c0c974f
+ENV K8S_RELEASE=v1.14.10 K8S_SHA512=b60f3834a53642ca35c412c0aee0fb30a485005c2280d93bcb01added6012ac18c541c663b0a2a95129f233bc75a0787f0aca78a4e3546cd83e7708ce56a2eb7
 
 RUN curl -L -o k8s.tgz https://dl.k8s.io/${K8S_RELEASE}/kubernetes-client-linux-amd64.tar.gz \
   && echo -n "${K8S_SHA512} k8s.tgz" | sha512sum -c --quiet \
@@ -17,16 +17,15 @@ RUN curl -L -o k8s.tgz https://dl.k8s.io/${K8S_RELEASE}/kubernetes-client-linux-
   && echo 'source <(kubectl completion bash)' >> /etc/bash.bashrc
 
 # Install helm.
-ENV HELM_RELEASE=v2.13.1 HELM_SHA256=c1967c1dfcd6c921694b80ededdb9bd1beb27cb076864e58957b1568bc98925a
+ENV HELM_RELEASE=v3.1.2 HELM_SHA256=e6be589df85076108c33e12e60cfb85dcd82c5d756a6f6ebc8de0ee505c9fd4c
 
-RUN curl -L -o helm.tgz https://storage.googleapis.com/kubernetes-helm/helm-${HELM_RELEASE}-linux-amd64.tar.gz \
+RUN curl -L -o helm.tgz https://get.helm.sh/helm-${HELM_RELEASE}-linux-amd64.tar.gz \
   && echo -n "${HELM_SHA256} helm.tgz" | sha256sum -c --quiet \
   && tar xzf helm.tgz \
   && mv linux-amd64/helm /usr/local/bin/helm \
   && rm -r linux-amd64/ helm.tgz \
   && echo 'source <(helm completion bash)' >> /etc/bash.bashrc \
-  && /usr/local/bin/helm init --client-only \
-  && /usr/local/bin/helm repo update
+  && helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 COPY motd /etc/motd
 RUN cat /etc/motd >> /etc/bash.bashrc
