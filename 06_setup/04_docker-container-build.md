@@ -20,13 +20,13 @@ gcloud auth configure-docker
 Tag the image.
 
 ```bash
-docker tag k8s-workshop eu.gcr.io/k8s-workshop/k8s-workshop:stable
-docker tag k8s-workshop eu.gcr.io/k8s-workshop/k8s-workshop:latest
+docker tag k8s-workshop eu.gcr.io/k8s-workshop-274312/k8s-workshop:stable
+docker tag k8s-workshop eu.gcr.io/k8s-workshop-274312/k8s-workshop:latest
 ```
 
 Push the image to registry.
 
 ```bash
-docker push eu.gcr.io/k8s-workshop/k8s-workshop:stable
-docker push eu.gcr.io/k8s-workshop/k8s-workshop:latest
+docker push eu.gcr.io/k8s-workshop-274312/k8s-workshop:stable
+docker push eu.gcr.io/k8s-workshop-274312/k8s-workshop:latest
 ```

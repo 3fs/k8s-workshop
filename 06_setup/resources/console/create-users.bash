@@ -27,14 +27,14 @@ function create_account() {
 
     # Build the container.
     docker build \
-           -t "eu.gcr.io/k8s-workshop/console:${name}" \
-           --build-arg CLUSTER_ENDPOINT="${cluster_endpoint}" \
-           --build-arg USER_NAMESPACE="${name}" \
-           --build-arg USER_TOKEN="${user_token}" \
-           .
+        -t "eu.gcr.io/k8s-workshop-274312/console:${name}" \
+        --build-arg CLUSTER_ENDPOINT="${cluster_endpoint}" \
+        --build-arg USER_NAMESPACE="${name}" \
+        --build-arg USER_TOKEN="${user_token}" \
+        .
 
     # Push the container to registry.
-    docker push "eu.gcr.io/k8s-workshop/console:${name}"
+    docker push "eu.gcr.io/k8s-workshop-274312/console:${name}"
 
     # Clean up.
     rm ca.crt
