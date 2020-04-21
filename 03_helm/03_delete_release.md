@@ -15,7 +15,7 @@ The output looks like this:
 
 ```console
 # helm uninstall my-wiki
-release "my-wiki" deleted
+release "my-wiki" uninstalled
 ```
 
 This will uninstall `my-wiki` from Kubernetes, but you will

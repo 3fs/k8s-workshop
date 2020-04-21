@@ -13,13 +13,12 @@ Install the chart while providing custom `values.yaml` to override the default
 settings and set ingress hostname.
 
 ```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install workshop-wp \
     -f wordpress-values.yaml \
     --set "ingress.hosts[0].name=wp-${CODE}.k8s.3fs.si" \
     --set "ingress.tls[0].hosts[0]=wp-${CODE}.k8s.3fs.si" \
     --wait \
-    bitnami/wordpress
+    stable/wordpress
 ```
 
 Open the deployed web page at `https://wp-${CODE}.k8s.3fs.si`

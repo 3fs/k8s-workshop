@@ -26,7 +26,7 @@ helm upgrade \
     --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
     --set "ingress.hosts[0].tls=true" \
     --set "ingress.hosts[0].tlsSecret=k8s.3fs.si-certificate" \
-    my-wiki bitnami/dokuwiki
+    my-wiki stable/dokuwiki
 ```
 
 <details>
@@ -38,7 +38,7 @@ helm upgrade \
 #     --set "ingress.hosts[0].name=$CODE.k8s.3fs.si" \
 #     --set "ingress.hosts[0].tls=true" \
 #     --set "ingress.hosts[0].tlsSecret=k8s.3fs.si-certificate" \
-#     my-wiki bitnami/dokuwiki
+#     my-wiki stable/dokuwiki
 Release "my-wiki" has been upgraded. Happy Helming!
 NAME: my-wiki
 LAST DEPLOYED: Tue Apr 21 08:06:06 2020
@@ -72,7 +72,7 @@ After a successful deployment we can check history once again.
 2       	Tue Apr 21 08:07:37 2020	deployed  	dokuwiki-6.0.15	0.20180422.201901061035	Upgrade complete
 ```
 
-There is a way to check, which user provided values were changed by executing the following command:
+There is a way to check which user provided values were changed by executing the following command:
 
 ```bash
 helm get values my-wiki

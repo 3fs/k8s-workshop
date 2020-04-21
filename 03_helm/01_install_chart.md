@@ -9,19 +9,18 @@ to the Internet using Ingress kubernetes object.
 ## Install an Example Chart
 
 To install a chart, you can run the `helm install` command. Helm has several
-ways to find and install a chart, but the easiest is to use one of the `bitnami`
-charts.
+ways to find and install a chart, but the easiest is to use one of the official
+`stable` charts.
 
-In the example below, the `bitnami` helm chart repository will be added and
-`bitnami/dokuwiki` chart will be installed, and the name of our new release is
-`my-wiki`.
+In the example below `stable/dokuwiki` chart will be installed, and the name of
+our new release is `my-wiki`.
 
 ```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
 ```
 
 ```bash
-helm install my-wiki bitnami/dokuwiki
+helm install my-wiki stable/dokuwiki
 ```
 
 This command created the objects and send them to k8s and the output describes,
@@ -32,10 +31,10 @@ installation.
     <summary>Show output</summary>
 
 ```console
-# helm repo add bitnami https://charts.bitnami.com/bitnami
-"bitnami" has been added to your repositories
+# helm repo add stable https://kubernetes-charts.storage.googleapis.com
+"stable" has been added to your repositories
 
-# helm install my-wiki bitnami/dokuwiki
+# helm install my-wiki stable/dokuwiki
 NAME: my-wiki
 LAST DEPLOYED: Tue Apr 21 08:02:44 2020
 NAMESPACE: default
