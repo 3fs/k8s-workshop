@@ -1,15 +1,26 @@
+---
+# api version used when sending definition to kubernetes cluster
 apiVersion: v1
+# Definition of kubernetes object
 kind: Service
+# Description of object with additional labels and/or annotations
 metadata:
   name: my-service
   labels:
     app: my-service
+# Configuration of Service object
 spec:
+  # Definition of how service will be exposed in kubernetes cluster
   type: ClusterIP
+  # port definitions
   ports:
     - port: 80
+      # which container port should Service connect to
       targetPort: http
+      # which protocol should the connection use, when connecting to container
       protocol: TCP
+      # name of the port definition. Will be used in Ingress Object
       name: http
+  # container with these labels will be exposed through this Service
   selector:
     app: my-deployment

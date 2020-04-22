@@ -1,10 +1,16 @@
+---
+# api version used when sending definition to kubernetes cluster
 apiVersion: apps/v1
+# Definition of kubernetes object
 kind: Deployment
+# Description of object with additional labels and/or annotations
 metadata:
   name: my-deployment
   labels:
     app: my-deployment
+# Definition of the Deployment object with defined pods and its containers.
 spec:
+  # number of running pods
   replicas: 1
   selector:
     matchLabels:
@@ -14,17 +20,24 @@ spec:
       labels:
         app: my-deployment
     spec:
+      # definition of a pod with single or multiple containers
       containers:
-      - image: eu.gcr.io/k8s-workshop-274312/k8s-workshop:stable
-        name: k8s-workshop
-        ports:
-          - name: http
-            containerPort: 80
-            protocol: TCP
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        # definition of container image used
+        - image: eu.gcr.io/k8s-workshop-274312/k8s-workshop:stable
+          # name of the container
+          name: k8s-workshop
+          # expose a http port if container supports it
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          # limits of the container to prevent excessive usage of resources
+          resources:
+            # request for resources at start
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            # resource limit when the pod is running
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

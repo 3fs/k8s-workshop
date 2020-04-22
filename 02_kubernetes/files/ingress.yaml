@@ -1,19 +1,34 @@
+---
+# api version used when sending definition to kubernetes cluster
 apiVersion: extensions/v1beta1
+# Definition of kubernetes object
 kind: Ingress
+# Description of object with additional labels and/or annotations
 metadata:
+  # Object name within kubernetes
   name: my-ingress
+  annotations:
+    # definition to which Ingress Controller ingress belongs
+    kubernetes.io/ingress.class: nginx
   labels:
+    # some basic description of object
     app: my-ingress
+# configuration part of Ingress object
 spec:
-  tls:
-    - hosts:
-        - cranky-hippo.k8s.3fs.si
-      secretName: k8s.3fs.si-certificate
   rules:
+    # define rule for the following hostname
     - host: cranky-hippo.k8s.3fs.si
       http:
         paths:
+          # if HTTP path starts with /, route all requests to service
+          # `my-service` to port `http` (defined in Deployment object)
           - path: "/"
             backend:
               serviceName: my-service
               servicePort: http
+  # definition of certificate for hostname
+  tls:
+    # define which certificate Secret is connected to which hostname
+    - hosts:
+        - cranky-hippo.k8s.3fs.si
+      secretName: k8s.3fs.si-certificate

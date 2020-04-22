@@ -2,7 +2,7 @@ FROM ubuntu:bionic as base
 
 # Install curl.
 RUN apt-get update \
-  && apt-get install -y curl git bash-completion vim-tiny nano \
+  && apt-get install -y curl git bash-completion vim nano \
   && echo 'source /etc/bash_completion' >> /etc/bash.bashrc \
   && rm -rf /var/lib/apt/lists/*
 

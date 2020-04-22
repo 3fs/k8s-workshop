@@ -60,9 +60,17 @@ enabled. To access the dashboard:
 ### Create a Deployment and Service objects
 
 One of the commands for creating and updating kubernetes objects is `kubectl
-apply`. Use it to create a Deployment resource named `my-deployment`, which will
+apply`.
+
+In this task we will create a Deployement `my-deployment`, which will
 run a sample container and a Service resource named `my-service`, which
 abstracts access to `my-deployment` in the cluster.
+
+Before the deployment check the definitions of both files:
+- [deployment.yaml](./files/deployment.yaml)
+- [service.yaml](./files/service.yaml)
+
+To create the objects in kubernetes cluster execute the following commands:
 
 ```bash
 kubectl apply -f /repo/02_kubernetes/files/deployment.yaml
@@ -78,7 +86,14 @@ deployment.apps/my-deployment created
 service/my-service created
 ```
 
+Inspect the resources created with the commands from [here](show-resources).
+
 ### Create the certificate secret
+
+To expose the service to Internet Ingress object needs to be created.
+Additionally, if we want to use HTTPS, the certificate has to be present in the
+kubernetes environment. The certificate must be stored in kubernetes Secret
+object and referenced in Ingress definition.
 
 A .yaml file to create the wildcard certificate secret is located in the `/`
 folder of Docker container. This object will be important in the future tasks.
@@ -97,9 +112,16 @@ secret/k8s.3fs.si-certificate created
 
 ### Create an Ingress object
 
-First off, edit hostnames in `/repo/02_kubernetes/files/ingress.yaml` to include
-`$CODE` (e.g. `cranky-hippo.k8s.3fs.si`). The `spec` section should look similar
-to:
+After successful import of certificate Secret object, we can create Ingress
+object to expose service to Internet.
+
+To expose the service to the Internet edit hostnames in
+`/repo/02_kubernetes/files/ingress.yaml` to include `$CODE` (e.g.
+`cranky-hippo.k8s.3fs.si`). To edit file you can use included `vim` or `nano`
+editors (quick guide how to use them is
+[here](https://www.howtoforge.com/faq/how-to-edit-files-on-the-command-line)).
+
+The `spec` section should look similar to:
 
 ```yaml
 tls:
@@ -130,7 +152,7 @@ output:
 ingress.extensions/my-ingress created
 ```
 
-### Show all resources
+### Show resources
 
 To list all configured resources, use `kubetl get <resource_type>`.
 
@@ -194,5 +216,9 @@ service "my-service" deleted
 # kubectl delete deployment my-deployment
 deployment.extensions "my-deployment" deleted
 ```
+
+### More information about kubernetes resources
+
+Definition of kubernetes resources has changed over kubernetes version. Latest definitions can be found [here](https://www.k8sref.io/).
 
 ## Next: [Helm](../03_helm/README.md)

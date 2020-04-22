@@ -1,3 +1,4 @@
+---
 # Custom blog name.
 wordpressBlogName: k8s-workshop
 
@@ -29,12 +30,13 @@ service:
 ingress:
   enabled: true
   annotations:
-  - kubernetes.io/ingress.class: nginx
+    - kubernetes.io/ingress.class: nginx
   hosts:
-  # URL of Wordpress deployment. For workshop participants, the prefix should contain $CODE.
-  - name: wp.k8s.3fs.si
-    path: /
+    # URL of Wordpress deployment. For workshop participants, the prefix should
+    # contain $CODE.
+    - name: wp.k8s.3fs.si
+      path: /
   tls:
-  - hosts:
-      - wp.k8s.3fs.si
-    secretName: k8s.3fs.si-certificate
+    - hosts:
+        - wp.k8s.3fs.si
+      secretName: k8s.3fs.si-certificate
