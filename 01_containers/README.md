@@ -107,7 +107,7 @@ docker stop k8s-workshop-hello
 You can pass environment variables to running container by specifying them in
 command line (`--env`). In the example below, the variable `CODE` is used by the
 container and displayed when you open the browser on [this
-address](http://127.0.0.1/hello).
+address](http://127.0.0.1:8080/hello).
 
 ```bash
 docker run \
