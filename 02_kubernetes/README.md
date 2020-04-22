@@ -86,7 +86,7 @@ deployment.apps/my-deployment created
 service/my-service created
 ```
 
-Inspect the resources created with the commands from [here](show-resources).
+Inspect the resources created with the commands from [here](#show-resources).
 
 ### Create the certificate secret
 
