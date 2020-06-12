@@ -43,7 +43,6 @@ glad to help you out.
 Here you can find some additional information about the workshop:
 
 - [Prerequisites](./00_prerequisites/README.md)
-- [Workshop setup](./06_setup/README.md)
 
 ## Credits
 
